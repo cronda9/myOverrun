@@ -22,3 +22,49 @@ Epilog and return
 ---------------------------------------------------------------------
 main
 
+Prolog
+ 0x400820 <main>:	sub	sp, sp, #0x10
+ 0x400824 <main+4>:	stp	x19, x30, [sp]
+
+mprotect(...)
+0x400828 <main+8>:	adrp	x19, 0x420000
+0x40082c <main+12>:	add	x19, x19, #0x58
+0x400830 <main+16>:	and  x0, x19, #0xfffffffffffff000
+0x400834 <main+20>:	mov  x1, #0x1				// #1
+0x400838 <main+24>:	mov  w2, #0x7				// #7
+0x40083c <main+28>:	bl   0x400610 <mprotect@plt>
+
+getName()
+
+0x400840 <main+32>:	bl	0x4007fc <getName>
+
+if(strcmp(name, "Andrew Appel") != 0)
+0x400844 <main+36>:	mov	x0, x19
+0x400848 <main+40>:	adrp	x1, 0x400000
+0x40084c <main+44>:	add x1, x1, #0x950
+0x400850 <main+48>:	bl  0x4005f0 <strcmp@plt>
+
+grade='B'
+0x400854 <main+52>:	cbnz	w0, 0x400864 <main+68>
+0x400858 <main+56>:	mov	w1, #0x42			// #66
+0x40085c <main+60>:	adrp				x0, 0x420000
+0x400860 <main+64>:	strb				w1, [x0,#68]
+
+printf("%c is your grade.\n",grade);
+0x400864 <main+68>:	adrp	x0, 0x400000
+0x400868 <main+72>:	add x0, x0, #0x960
+0x40086c <main+76>:	adrp	x1, 0x420000
+0x400870 <main+80>:	ldrb	w1, [x1,#68]
+0x400874 <main+84>:	bl  0x400600 <printf@plt>
+
+printf("Thank you, %s\n",name);
+0x400878 <main+88>:	adrp	x0, 0x400000
+0x40087c <main+92>:	add	x0, x0, #0x978
+0x400880 <main+96>:	adrp	x1, 0x420000
+0x400884 <main+100>:	add	x1, x1, #0x58
+0x400888 <main+104>:	bl  0x400600 <printf@plt>
+
+Epilogue and return
+ldp	x19, x30, [sp]
+0x400894 <main+116>:	      add  sp, sp, #0x10
+0x400898 <main+120>:    ret
