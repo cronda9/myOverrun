@@ -5,6 +5,16 @@ Text Section
 -----------------------------------------------------------------------
 readString
 
+Prolog
+0x400780 <readString>:	sub	sp, sp, #0x50
+0x400784 <readString+4>:	stp x19, x20, [sp]
+
+First loop setup
+
+Epilog and return
+0x400814 <getName+24>:	ldr	x30, [sp]
+0x400818 <getName+28>:	add  sp, sp, #0x10
+0x40081c <getName+32>:	ret
 
 getName
 
