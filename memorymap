@@ -1,0 +1,24 @@
+Authors: Chris Paucar and Christian Ronda
+memorymap
+-----------------------------------------------------------------------
+getName
+
+Prolog
+0x4007fc <getName>:	sub	sp, sp, #0x10
+0x400800 <getName+4>:	str x30, [sp]
+
+printf("What is your name?\n");
+0x400804 <getName+8>:	adrp	x0, 0x400000
+0x400808 <getName+12>:     add  x0, x0, #0x938
+0x40080c <getName+16>:  bl   0x4005e0 <puts@plt>
+
+readString();
+0x400810 <getName+20>:	bl	0x400780 <readString>
+
+Epilog and return
+0x400814 <getName+24>:	ldr	x30, [sp]
+0x400818 <getName+28>:	add  sp, sp, #0x10
+0x40081c <getName+32>:	ret
+---------------------------------------------------------------------
+main
+
