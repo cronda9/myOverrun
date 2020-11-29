@@ -1,6 +1,11 @@
 Authors: Chris Paucar and Christian Ronda
 memorymap
 -----------------------------------------------------------------------
+Text Section
+-----------------------------------------------------------------------
+readString
+
+
 getName
 
 Prolog
@@ -19,7 +24,7 @@ Epilog and return
 0x400814 <getName+24>:	ldr	x30, [sp]
 0x400818 <getName+28>:	add  sp, sp, #0x10
 0x40081c <getName+32>:	ret
----------------------------------------------------------------------
+
 main
 
 Prolog
@@ -47,8 +52,8 @@ if(strcmp(name, "Andrew Appel") != 0)
 grade='B'
 0x400854 <main+52>:	cbnz	w0, 0x400864 <main+68>
 0x400858 <main+56>:	mov	w1, #0x42			// #66
-0x40085c <main+60>:	adrp				x0, 0x420000
-0x400860 <main+64>:	strb				w1, [x0,#68]
+0x40085c <main+60>:	adrp	x0, 0x420000
+0x400860 <main+64>:	strb	w1, [x0,#68]
 
 printf("%c is your grade.\n",grade);
 0x400864 <main+68>:	adrp	x0, 0x400000
@@ -67,4 +72,16 @@ printf("Thank you, %s\n",name);
 Epilogue and return
 ldp	x19, x30, [sp]
 0x400894 <main+116>:	      add  sp, sp, #0x10
-0x400898 <main+120>:    ret
+0x400898 <main+120>:          ret
+------------------------------------------------------------------
+Data Section
+------------------------------------------------------------------
+Address		Content		Description
+0x420044	0x00000044      This is the representation of the
+				character 'D' in hex.
+------------------------------------------------------------------
+BSS Section
+------------------------------------------------------------------
+
+------------------------------------------------------------------
+Stack Section
