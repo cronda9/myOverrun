@@ -5,24 +5,19 @@
 
 int main(void){
     int i;
-    char c;
-    unsigned int uiData;
-    int count;
+    unsigned long uiData;
     FILE *psFile;
-    
+    /*address where grade='B'*/
     uiData = 0x400858;
     psFile = fopen("dataB", "w");
     
-    while((c = getchar()) != '\n' && c != EOF){
-        putc(c, psFile);
-        count++;
-    }
-
-    for(i = 0; i < (65-count); i++){
+    fprintf(psFile,"Chris Paucar");
+    
+    for(i = 0; i < 36; i++){
         putc('\0', psFile);
     }
     
-    fwrite(&uiData, sizeof(unsigned int), 1, psFile);
+    fwrite(&uiData, sizeof(unsigned long), 1, psFile);
     fclose(psFile);
     
     return 0;
