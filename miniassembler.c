@@ -37,10 +37,12 @@ unsigned int MiniAssembler_mov(unsigned int uiReg, unsigned int uiImmed)
 {
    unsigned int uiInstr;
    /*instruction before implementing uiReg, uiImmed*/
-   uiInstr=0x5280000;
+   uiInstr = 0x52800000;
    uiInstr |= uiReg;/*instruction*/
 
    uiImmed <<= 5;/*shift left by 5 to get to correct location*/
+   /* 0000 0000 0001 1111 1111 1111 1110 0000 */
+   /*    0    0    1    f   f    f    e    0  */
    uiImmed &= 0x001fffe0;/*mask by using &=*/
    uiInstr |= uiImmed;/*or this to the instruction*/
 
@@ -51,6 +53,17 @@ unsigned int MiniAssembler_strb(unsigned int uiFromReg,
                                 unsigned int uiToReg)
 {
    unsigned int uiInstr;
+   unsigned int uiDispLo;
+   unsigned int mask;
+   /*instruction before implementing uiReg, uiImmed*/
+   uiInstr = 0x39000000;
+   /*uiDispLo = 0x1;
+   uiDispLo <<= 9;
+   uiInstr |= uiDispLo;*/
+
+   uiInstr |= uiFromReg;
+   uiToReg <<= 5;
+   uiInstr |= uiToReg;
 
    return uiInstr;
 }
@@ -67,9 +80,6 @@ unsigned int MiniAssembler_b(unsigned long ulAddr,
    offset=ulAddr-ulAddrOfThisInstr;
    /*get rid of the last two bits*/
    offset=offset >> 2;
-   /*mask*/
-   /*0001 0011 1111 11111 1111 1111 1111 1111 */
-   /*1     3   f    f      f    f    f     f*/
    offset &= 0x03ffffff;  
    /*or offset with instruction*/
 
