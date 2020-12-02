@@ -179,16 +179,8 @@ Stack Section
 
 Offset		Description
 0			x30	readString
-4			i
-8			c
-12			buf	
-13			buf	
-14			buf	
-11			buf	
-12			buf	
-13			buf	
-14			buf	
-15			buf	
+8			i
+12			c
 16			buf	
 17			buf	
 18			buf	
@@ -225,10 +217,17 @@ Offset		Description
 49			buf	
 50			buf	
 51			buf	
+52			buf	
+53			buf	
+54			buf	
+55			buf	
+56			buf	
+57			buf	
+58			buf	
+59			buf	
 60			buf	
 61			buf	
 62			buf	
-63			buf	
-64			buf	
-65			x30 getName
-73			x30 main
+63			buf		
+64			x30 getName
+72			x30 main
