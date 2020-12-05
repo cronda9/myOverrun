@@ -86,3 +86,23 @@ unsigned int MiniAssembler_b(unsigned long ulAddr,
    uiInstr |= offset;
    return uiInstr;
 }
+
+unsigned int MiniAssembler_bl(unsigned long ulAddr,
+                             unsigned long ulAddrOfThisInstr)
+{
+   unsigned int uiInstr;
+   unsigned int offset;
+
+   /*instruction before implementing params*/
+   uiInstr=0x94000000;
+   /*calculate and apply offset*/
+   offset=ulAddr-ulAddrOfThisInstr;
+   /*get rid of the last two bits*/
+   offset=offset >> 2;
+   offset &= 0x03ffffff;  
+   /*or offset with instruction*/
+
+   uiInstr |= offset;
+   return uiInstr;
+                                
+}
