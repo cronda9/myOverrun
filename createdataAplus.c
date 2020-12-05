@@ -20,7 +20,7 @@ int main(void){
     /* mov x0, "A" */
     mov1 = MiniAssembler_mov(0, 0x00000041);
     /* bl printf */
-    bl = MiniAssembler_bl(0x400600 ,0x42006C);
+    bl = MiniAssembler_bl(0x4005e0 ,0x42006C);
     /* adr x0, [sp, grade] */
     adr = MiniAssembler_adr(0, 0x420044, 0x420074);
     /* mov w1, "+" */
