@@ -22,13 +22,13 @@ int main(void){
     /* bl printf */
     bl = MiniAssembler_bl(0x400600 ,0x42006C);
     /* adr x0, [sp, grade] */
-    adr = MiniAssembler_adr(0, 0x420044, 0x42006C);
-    /* mov w1, "A" */
+    adr = MiniAssembler_adr(0, 0x420044, 0x420074);
+    /* mov w1, "+" */
     mov2 = MiniAssembler_mov(1, 0x0000002B);
     /* strb w1, [x0] */
     strb = MiniAssembler_strb(0, 1);
     /* b printf */
-    b = MiniAssembler_b(0x400864, 0x420074);
+    b = MiniAssembler_b(0x400864, 0x42007C);
     
     psFile = fopen("dataA", "w");
     
