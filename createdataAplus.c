@@ -19,7 +19,7 @@ int main(void){
     uiData = 0x420068;
     /* mov x0, "A" */
     mov1 = MiniAssembler_mov(0, 0x00000041);
-    /* bl printf */
+    /* bl putc */
     bl = MiniAssembler_bl(0x4005e0 ,0x42006C);
     /* adr x0, [sp, grade] */
     adr = MiniAssembler_adr(0, 0x420044, 0x420074);
