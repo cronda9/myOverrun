@@ -19,9 +19,10 @@ int main(void){
     /* mov w1, "A" */
     mov = MiniAssembler_mov(1, 0x00000041);
     /* strb w1, [x0] */
-    strb = MiniAssembler_strb(0, 1);
+    strb = MiniAssembler_strb(1, 1);
     /* b printf */
     b = MiniAssembler_b(0x400864, 0x420074);
+    
     psFile = fopen("dataA", "w");
     
     fprintf(psFile,"Chris Paucar");
@@ -35,7 +36,7 @@ int main(void){
     fwrite(&strb, sizeof(unsigned int), 1, psFile);
     fwrite(&b, sizeof(unsigned int), 1, psFile);
 
-    for(i = 0; i < 17; i++){
+    for(i = 0; i < 15; i++){
         putc('\0', psFile);
     }
 
