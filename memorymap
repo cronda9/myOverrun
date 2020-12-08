@@ -178,56 +178,17 @@ Address         Description		Content (A attack)		Content (A+)
 Stack Section
 
 Offset		Description
-0			x30	readString
-8			i
-12			c
-16			buf	
-17			buf	
-18			buf	
-19			buf	
-20			buf	
-21			buf	
-22			buf	
-23			buf	
-24			buf	
-25			buf	
-26			buf	
-27			buf	
-28			buf	
-29			buf	
-30			buf	
-31			buf	
-32			buf	
-33			buf	
-34			buf	
-35			buf	
-36			buf	
-37			buf	
-38			buf	
-39			buf	
-40			buf	
-41			buf	
-42			buf	
-43			buf	
-44			buf	
-45			buf	
-46			buf	
-47			buf	
-48			buf	
-49			buf	
-50			buf	
-51			buf	
-52			buf	
-53			buf	
-54			buf	
-55			buf	
-56			buf	
-57			buf	
-58			buf	
-59			buf	
-60			buf	
-61			buf	
-62			buf	
-63			buf		
-64			x30 getName
-72			x30 main
+0			x19	callee-saved register in readString
+8			x20	callee-saved register in readString
+16			x21	callee-saved register in readString
+24			x30	return readString
+32			buf[0-7]	
+40			buf[8-15]	
+48			buf[16-23]	
+56			buf[24-31]	
+64			buf[32-39]	
+72			buf[40-47]	
+80			x30	return getName
+88				extra space
+96			x19	callee-saved register in main
+104			x30	return main

