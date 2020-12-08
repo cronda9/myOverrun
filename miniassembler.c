@@ -53,13 +53,9 @@ unsigned int MiniAssembler_strb(unsigned int uiFromReg,
                                 unsigned int uiToReg)
 {
    unsigned int uiInstr;
-   unsigned int uiDispLo;
-   unsigned int mask;
+   
    /*instruction before implementing uiReg, uiImmed*/
    uiInstr = 0x39000000;
-   /*uiDispLo = 0x1;
-   uiDispLo <<= 9;
-   uiInstr |= uiDispLo;*/
 
    uiInstr |= uiFromReg;
    uiToReg <<= 5;
